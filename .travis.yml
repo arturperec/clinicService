@@ -11,5 +11,5 @@ notifications:
   email: false
 
 script:
-  - mvn install -D skipTests=true -D maven.javadoc.skip=true -B -V
-  - mvn cobertura:cobertura -D cobertura.report.format=xml -D maven.javadoc.skip.true
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip.true
