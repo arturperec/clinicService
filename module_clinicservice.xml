@@ -51,15 +51,15 @@
   
   <target name="compile.module.clinicservice" depends="compile.module.clinicservice.production,compile.module.clinicservice.tests" description="Compile module clinicService"/>
   
-  <target name="compile.module.clinicservice.production" depends="register.custom.compilers" description="Compile module clinicService; production classes">
+  <target name="compile.module.clinicservice.production" description="Compile module clinicService; production classes">
     <mkdir dir="${clinicservice.output.dir}"/>
-    <javac2 destdir="${clinicservice.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.clinicservice}/javac">
+    <javac destdir="${clinicservice.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.clinicservice}/javac">
       <compilerarg line="${compiler.args.clinicservice}"/>
       <bootclasspath refid="clinicservice.module.bootclasspath"/>
       <classpath refid="clinicservice.module.production.classpath"/>
       <src refid="clinicservice.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.clinicservice"/>
-    </javac2>
+    </javac>
     
     <copy todir="${clinicservice.output.dir}">
       <fileset dir="${module.clinicservice.basedir}/src">
@@ -69,7 +69,7 @@
     </copy>
   </target>
   
-  <target name="compile.module.clinicservice.tests" depends="register.custom.compilers,compile.module.clinicservice.production" description="compile module clinicService; test classes" unless="skip.tests"/>
+  <target name="compile.module.clinicservice.tests" depends="compile.module.clinicservice.production" description="compile module clinicService; test classes" unless="skip.tests"/>
   
   <target name="clean.module.clinicservice" description="cleanup module">
     <delete dir="${clinicservice.output.dir}"/>
