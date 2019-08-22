@@ -3,7 +3,6 @@ language: java
 sudo: false # faster builds
 
 install: true
-# - mvn -N io.takari:maven:wrapper
 
 jdk:
   - openjdk8
@@ -11,9 +10,7 @@ jdk:
 notifications:
   email: false
 
-script: "mvn clean package -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
-
-#script:
-#  - export TZ=Europe/Warsaw
-#  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-#  - mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip.true
+script:
+  - export TZ=Europe/Warsaw
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip.true
