@@ -4,9 +4,9 @@
   
   <property file="build.properties"/>
   <!-- Uncomment the following property if no tests compilation is needed -->
-
+  
   <property name="skip.tests" value="true"/>
-   
+
   
   <!-- Compiler options -->
   
@@ -131,85 +131,7 @@
   
   <!-- Modules -->
   
-  
-  <!-- Module clinicService -->
-  
-  <dirname property="module.clinicservice.basedir" file="${ant.file}"/>
-  
-  
-  <property name="module.jdk.home.clinicservice" value="${project.jdk.home}"/>
-  <property name="module.jdk.bin.clinicservice" value="${project.jdk.bin}"/>
-  <property name="module.jdk.classpath.clinicservice" value="${project.jdk.classpath}"/>
-  
-  <property name="compiler.args.clinicservice" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
-  
-  <property name="clinicservice.output.dir" value="${module.clinicservice.basedir}/out/production/clinicService"/>
-  <property name="clinicservice.testoutput.dir" value="${module.clinicservice.basedir}/out/test/clinicService"/>
-  
-  <path id="clinicservice.module.bootclasspath">
-    <!-- Paths to be included in compilation bootclasspath -->
-  </path>
-  
-  <path id="clinicservice.module.production.classpath">
-    <path refid="${module.jdk.classpath.clinicservice}"/>
-  </path>
-  
-  <path id="clinicservice.runtime.production.module.classpath">
-    <pathelement location="${clinicservice.output.dir}"/>
-  </path>
-  
-  <path id="clinicservice.module.classpath">
-    <path refid="${module.jdk.classpath.clinicservice}"/>
-    <pathelement location="${clinicservice.output.dir}"/>
-  </path>
-  
-  <path id="clinicservice.runtime.module.classpath">
-    <pathelement location="${clinicservice.testoutput.dir}"/>
-    <pathelement location="${clinicservice.output.dir}"/>
-  </path>
-  
-  
-  <patternset id="excluded.from.module.clinicservice">
-    <patternset refid="ignored.files"/>
-  </patternset>
-  
-  <patternset id="excluded.from.compilation.clinicservice">
-    <patternset refid="excluded.from.module.clinicservice"/>
-  </patternset>
-  
-  <path id="clinicservice.module.sourcepath">
-    <dirset dir="${module.clinicservice.basedir}">
-      <include name="src"/>
-    </dirset>
-  </path>
-  
-  
-  <target name="compile.module.clinicservice" depends="compile.module.clinicservice.production,compile.module.clinicservice.tests" description="Compile module clinicService"/>
-  
-  <target name="compile.module.clinicservice.production" description="Compile module clinicService; production classes">
-    <mkdir dir="${clinicservice.output.dir}"/>
-    <javac destdir="${clinicservice.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.clinicservice}/javac">
-      <compilerarg line="${compiler.args.clinicservice}"/>
-      <bootclasspath refid="clinicservice.module.bootclasspath"/>
-      <classpath refid="clinicservice.module.production.classpath"/>
-      <src refid="clinicservice.module.sourcepath"/>
-      <patternset refid="excluded.from.compilation.clinicservice"/>
-    </javac>
-    
-    <copy todir="${clinicservice.output.dir}">
-      <fileset dir="${module.clinicservice.basedir}/src">
-        <patternset refid="compiler.resources"/>
-        <type type="file"/>
-      </fileset>
-    </copy>
-  </target>
-  
-  <target name="compile.module.clinicservice.tests" depends="compile.module.clinicservice.production" description="compile module clinicService; test classes" unless="skip.tests"/>
-  
-  <target name="clean.module.clinicservice" description="cleanup module">
-    <delete dir="${clinicservice.output.dir}"/>
-    <delete dir="${clinicservice.testoutput.dir}"/>
-  </target>
+  <import file="${basedir}/module_clinicservice.xml"/>
   
   <target name="init" description="Build initialization">
     <!-- Perform any build initialization in this target -->
