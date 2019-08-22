@@ -1,5 +1,7 @@
 language: java
 
+sudo: false # faster builds
+
 install: true
 
 jdk:
@@ -7,3 +9,7 @@ jdk:
 
 notifications:
   email: false
+
+script:
+  - mvn install -D skipTests=true -D maven.javadoc.skip=true -B -V
+  - mvn cobertura:cobertura -D cobertura.report.format=xml -D maven.javadoc.skip.true
