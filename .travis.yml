@@ -11,5 +11,6 @@ notifications:
   email: false
 
 script:
+  - export TZ=Europe/Warsaw
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   - mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip.true
