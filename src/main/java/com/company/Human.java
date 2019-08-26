@@ -25,9 +25,9 @@ public class Human {
         this.pesel = pesel;
     }
 
-    void printHuman() {
-        System.out.println("Name: " + name);
-        System.out.println("Surname: " + surname);
-        System.out.println("Pesel: " + pesel);
+    void printBasicData() {
+        System.out.println("Name: " + getName());
+        System.out.println("Surname: " + getSurname());
+        System.out.println("Pesel: " + getPesel());
     }
 }
