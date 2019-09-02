@@ -6,12 +6,6 @@ class Human {
     private String surname;
     private String pesel;
 
-//    HumanData(String name, String surname, String pesel) {
-//        Human.name = name;
-//        Human.surname = surname;
-//        Human.pesel = pesel;
-//    }
-
     String getName() {
         return name;
     }
