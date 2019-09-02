@@ -30,13 +30,13 @@ class Human {
         this.pesel = pesel;
     }
 
-    String getHumanData() {
+    String getBasicData() {
         return ("Name: " + getName() +
                 "\nSurname: " + getSurname() +
                 "\nPesel: " + getPesel());
     }
 
-    void setHumanData(String name, String surname, String pesel) {
+    void setBasicData(String name, String surname, String pesel) {
         this.name = name;
         this.surname = surname;
         this.pesel = pesel;

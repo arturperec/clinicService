@@ -13,7 +13,7 @@ class HumanTest {
     @BeforeEach
     void SetUp() {
         testHuman = new Human();
-        testHuman.setHumanData("Janusz", "Parawanik", "93101055893");
+        testHuman.setBasicData("Janusz", "Parawanik", "93101055893");
     }
 
     @AfterEach
@@ -41,7 +41,7 @@ class HumanTest {
     void HumanPrintData_isCorrect() {
         assertEquals("Name: Janusz" +
                 "\nSurname: Parawanik" +
-                "\nPesel: 93101055893", testHuman.getHumanData());
+                "\nPesel: 93101055893", testHuman.getBasicData());
     }
 
 
