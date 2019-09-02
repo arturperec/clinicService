@@ -17,8 +17,9 @@ class HumanTest {
     }
 
     @AfterEach
-    void tearDownClass() {
+    void tearDown() {
         // should I set created class for null here for Garbage Collector? and if yes - how?
+        testHuman = null; // is it the correct way?
     }
 
     @Test
